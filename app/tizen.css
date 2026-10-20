@@ -1,0 +1,417 @@
+html.tizen-tv,
+html.tizen-tv body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+html.tizen-tv body {
+  font-size: 18px;
+}
+
+html.tizen-tv .topbar {
+  height: 84px;
+  padding: 0 30px;
+}
+
+html.tizen-tv .content-view,
+html.tizen-tv .player-view {
+  height: calc(100vh - 84px);
+}
+
+html.tizen-tv body.live-player-fullscreen .player-view {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+}
+
+html.tizen-tv body.live-player-fullscreen .video-shell,
+html.tizen-tv body.live-player-fullscreen #video-player,
+html.tizen-tv body.live-player-fullscreen .tizen-avplay-object {
+  width: 100vw;
+  height: 100vh;
+  max-width: none;
+  margin: 0;
+}
+
+html.tizen-tv .content-view {
+  grid-template-columns: 320px 1fr;
+}
+
+html.tizen-tv .sidebar {
+  padding: 22px;
+}
+
+html.tizen-tv .category-list button,
+html.tizen-tv .sidebar-head button,
+html.tizen-tv .page-heading button,
+html.tizen-tv .player-top button,
+html.tizen-tv .settings-grid button,
+html.tizen-tv .shortcut-grid button {
+  min-height: 52px;
+}
+
+html.tizen-tv .item-grid {
+  gap: 16px;
+}
+
+/* Chrome 76 não oferece aspect-ratio. Reserve a altura no fluxo para que
+   capas e títulos absolutos não reduzam o botão a uma linha. */
+html.tizen-tv .item-card-poster {
+  display: block;
+  width: 100%;
+  aspect-ratio: auto;
+}
+
+html.tizen-tv .item-card,
+html.tizen-tv .epg-row,
+html.tizen-tv .history-card,
+html.tizen-tv .continue-card {
+  contain: layout;
+}
+
+html.tizen-tv .item-card-poster::before {
+  content: "";
+  display: block;
+  padding-top: 150%;
+}
+
+html.tizen-tv .item-card-poster .poster::after {
+  top: auto;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+html.tizen-tv .item-card-poster img[data-poster-src] {
+  visibility: hidden;
+}
+
+html.tizen-tv .series-poster {
+  height: 240px;
+}
+
+html.tizen-tv .movie-detail .series-poster {
+  width: 240px;
+  height: 360px;
+}
+
+html.tizen-tv .item-card-poster .meta strong {
+  font-size: 15px;
+}
+
+html.tizen-tv button:focus,
+html.tizen-tv input:focus,
+html.tizen-tv select:focus,
+html.tizen-tv [tabindex]:focus {
+  outline: 4px solid #ffd84d;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, .72), 0 0 26px rgba(255, 216, 77, .42);
+}
+
+html.tizen-tv .tv-nav-focus {
+  outline: 4px solid #ffd84d;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, .72), 0 0 26px rgba(255, 216, 77, .42);
+}
+
+html.tizen-tv .item-card:focus,
+html.tizen-tv .item-card-poster:focus {
+  transform: none;
+  border-color: #ffd84d;
+  z-index: 3;
+}
+
+html.tizen-tv .category-list button.active,
+html.tizen-tv .history-filter.active,
+html.tizen-tv .season-tab.active,
+html.tizen-tv .panel-types button.active,
+html.tizen-tv .account-row.active,
+html.tizen-tv .live-channel-option.selected,
+html.tizen-tv .series-episode-row:focus {
+  border-color: #ffd84d;
+  background: rgba(255, 216, 77, .16);
+}
+
+html.tizen-tv .live-channel-option.selected,
+html.tizen-tv .live-channel-option:focus {
+  outline-color: #ffd84d;
+}
+
+html.tizen-tv .player-recovery-actions button.selected,
+html.tizen-tv .player-recovery-actions button:focus {
+  outline-color: #ffd84d;
+  border-color: #ffd84d;
+  background: rgba(255, 216, 77, .2);
+}
+
+/* Reduza repaint/composição no Chromium 76 da TV durante navegação por foco. */
+html.tizen-tv .media-card,
+html.tizen-tv .item-card,
+html.tizen-tv .item-card-poster,
+html.tizen-tv .continue-card,
+html.tizen-tv .history-card,
+html.tizen-tv .settings-grid button,
+html.tizen-tv .shortcut-grid button,
+html.tizen-tv .season-tab,
+html.tizen-tv .series-episode-row {
+  transition: none;
+  box-shadow: none;
+}
+
+html.tizen-tv button:focus,
+html.tizen-tv input:focus,
+html.tizen-tv select:focus,
+html.tizen-tv [tabindex]:focus,
+html.tizen-tv .tv-nav-focus,
+html.tizen-tv .media-card:focus,
+html.tizen-tv .continue-card:focus,
+html.tizen-tv .history-card:focus-within {
+  box-shadow: none;
+  transform: none;
+}
+
+html.tizen-tv .series-detail-bg {
+  filter: none;
+}
+
+html.tizen-tv .modal-backdrop {
+  backdrop-filter: none;
+}
+
+html.tizen-tv .series-detail-close,
+html.tizen-tv .season-tab,
+html.tizen-tv .series-episode-row {
+  font-size: 18px;
+}
+
+html.tizen-tv .episode-watched,
+html.tizen-tv .episode-progress-label,
+html.tizen-tv .episode-complete-status {
+  color: #ffd84d;
+}
+
+html.tizen-tv .track-option.selected {
+  border-color: #ffd84d;
+  background: rgba(255, 216, 77, .16);
+}
+
+html.tizen-tv .track-option {
+  min-height: 66px;
+  font-size: 18px;
+}
+
+html.tizen-tv .player-control-head strong {
+  font-size: 20px;
+}
+
+html.tizen-tv .player-control-head small,
+html.tizen-tv .player-control-progress > span {
+  font-size: 16px;
+}
+
+html.tizen-tv .movie-detail-actions .btn {
+  font-size: 20px;
+}
+
+html.tizen-tv .series-detail-scroll {
+  padding: 30px 42px 48px;
+}
+
+html.tizen-tv .tv-form-hint {
+  margin: -4px 0 12px;
+  font-size: 15px;
+  opacity: .78;
+}
+
+/* Chrome 76 na TV não reconhece inset nem min() nas dimensões dos modais. */
+html.tizen-tv body::before,
+html.tizen-tv .series-detail-backdrop,
+html.tizen-tv .series-detail,
+html.tizen-tv .series-detail-bg,
+html.tizen-tv .series-detail-shade,
+html.tizen-tv .item-card-poster .poster,
+html.tizen-tv .player-message,
+html.tizen-tv .player-recovery {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+html.tizen-tv .account-login .topbar {
+  display: none;
+}
+
+html.tizen-tv .profile-selection .topbar {
+  display: none;
+}
+
+html.tizen-tv .profile-screen {
+  height: 100vh;
+  padding: 34px 70px;
+}
+
+html.tizen-tv .profile-screen h1 {
+  font-size: 50px;
+}
+
+html.tizen-tv .profile-grid {
+  width: 1180px;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
+
+html.tizen-tv .profile-card {
+  min-height: 245px;
+}
+
+html.tizen-tv .profile-card.tv-nav-focus,
+html.tizen-tv .profile-footer-actions .tv-nav-focus,
+html.tizen-tv .profile-manager-row .tv-nav-focus,
+html.tizen-tv .avatar-choice.tv-nav-focus,
+html.tizen-tv .pin-keypad .tv-nav-focus {
+  outline: 3px solid #ffd84d !important;
+  outline-offset: 3px;
+  border-color: #ffd84d !important;
+}
+
+html.tizen-tv .profile-pin-modal {
+  width: 620px;
+}
+
+html.tizen-tv .pin-keypad {
+  width: 360px;
+}
+
+html.tizen-tv .pin-keypad button {
+  height: 72px;
+  font-size: 26px;
+}
+
+html.tizen-tv .account-login-screen {
+  height: 100vh;
+  padding: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(145deg, #061a33, #0b2d57);
+}
+
+html.tizen-tv .account-login-card {
+  width: 960px;
+  max-width: 100%;
+  max-height: 100%;
+  padding: 28px 36px;
+}
+
+html.tizen-tv .account-login-card .login-brand {
+  color: #19c9f4;
+  font-size: 18px;
+  letter-spacing: .12em;
+  margin-bottom: 10px;
+}
+
+html.tizen-tv .account-login-card h2 {
+  font-size: 30px;
+}
+
+html.tizen-tv .account-login-card .form-grid label {
+  font-size: 18px;
+}
+
+html.tizen-tv .account-login-card .form-grid input {
+  font-size: 20px;
+}
+
+html.tizen-tv .account-login-card #xtream-fields {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+html.tizen-tv .account-login-card #xtream-fields > label:first-child {
+  grid-column: 1 / -1;
+}
+
+html.tizen-tv .account-login-card .panel-types button {
+  min-height: 68px;
+}
+
+html.tizen-tv .account-login-card .account-list {
+  max-height: 180px;
+  overflow: auto;
+}
+
+/* O runtime da TV não oferece gap em flex containers. */
+html.tizen-tv .form-actions > button + button {
+  margin-left: 10px;
+}
+
+html.tizen-tv .video-shell {
+  position: relative;
+  background: #000;
+}
+
+html.tizen-tv .tizen-avplay-object {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background: #000;
+}
+
+html.tizen-tv .video-shell.native-active video {
+  visibility: hidden;
+}
+
+html.tizen-tv .video-shell.native-active .player-message {
+  z-index: 2;
+}
+
+html.tizen-tv .player-progress-overlay,
+html.tizen-tv .live-zap-overlay {
+  z-index: 4;
+}
+
+html.tizen-tv .live-channel-panel {
+  width: 560px;
+  max-width: 52vw;
+  z-index: 6;
+}
+
+html.tizen-tv .live-channel-option {
+  min-height: 78px;
+  font-size: 18px;
+}
+
+html.tizen-tv .live-channel-copy strong {
+  font-size: 17px;
+}
+
+html.tizen-tv .live-channel-copy small {
+  font-size: 13px;
+}
+
+html.tizen-tv .live-zap-copy strong {
+  font-size: 24px;
+}
+
+html.tizen-tv .live-zap-copy span,
+html.tizen-tv .live-zap-copy small {
+  font-size: 16px;
+}
+
+@media (min-width: 1800px) {
+  html.tizen-tv body { font-size: 20px; }
+  html.tizen-tv .content-view { grid-template-columns: 360px 1fr; }
+  html.tizen-tv .item-grid { gap: 20px; }
+}

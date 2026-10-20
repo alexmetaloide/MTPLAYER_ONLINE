@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#10131d" />
+  <meta name="referrer" content="no-referrer" />
+  <meta name="description" content="MTPLAYER Web — seu player IPTV no navegador. Use sua própria lista autorizada." />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: blob:; img-src 'self' data: blob: http: https:; media-src 'self' blob: http: https:; connect-src 'self' http: https:; style-src 'self' 'unsafe-inline'; script-src 'self'; worker-src 'self' blob:;" />
+  <title>MTPLAYER Web</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="discover.css" />
+  <link rel="stylesheet" href="player/cinema-controls.css" />
+  <link id="android-mobile-styles" rel="stylesheet" href="mobile.css" />
+  <link id="android-tv-styles" rel="stylesheet" href="android-tv.css" media="not all" />
+  <link id="tizen-tv-styles" rel="stylesheet" href="tizen.css" media="not all" />
+  <link rel="stylesheet" href="web/web.css" />
+</head>
+<body>
+  <div id="app">
+    <header class="topbar">
+      <button class="brand" data-view="home" aria-label="Início">
+        <img class="brand-logo" src="assets/mtplayer-logo.jpg" alt="" />
+        <strong>MTPLAYER</strong>
+      </button>
+      <div class="top-actions">
+        <button class="discover-top-link hub-search-top" data-view="search" title="Pesquisar filmes e séries">⌕ Buscar</button>
+        <button class="discover-top-link" data-view="discover" title="Descobrir filmes e séries">✦ Descubra</button>
+        <button class="discover-top-link recent-top-link" data-view="recent" title="Filmes e séries adicionados recentemente">◷ Recentes</button>
+        <span id="clock"></span>
+        <button class="icon-btn" data-action="switch-profile" title="Trocar perfil">☺</button>
+        <button class="icon-btn" data-action="refresh" title="Atualizar conteúdo">↻</button>
+        <button class="icon-btn" data-view="settings" title="Configurações">⚙</button>
+      </div>
+    </header>
+
+    <main id="view-root"></main>
+
+    <div id="toast" class="toast" aria-live="polite"></div>
+  </div>
+
+  <template id="home-template">
+    <section class="home-view view-pad">
+      <div class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">SEU CONTEÚDO, ORGANIZADO</p>
+          <h1>MTPLAYER</h1>
+          <p id="home-account-label">Configure sua conta para começar.</p>
+        </div>
+        <div class="hero-status">
+          <span class="status-dot"></span>
+          <span id="connection-status">Sem conta conectada</span>
+        </div>
+      </div>
+
+      <section id="hub-featured" class="hub-featured hidden" aria-label="Destaque do catálogo"></section>
+
+      <div class="primary-grid">
+        <button class="media-card live" data-view="live"><span class="media-icon">▣</span><strong>TV AO VIVO</strong><small id="live-count">0 canais</small></button>
+        <button class="media-card epg" data-view="epg"><span class="media-icon">☷</span><strong>GUIA TV</strong><small>Programação</small></button>
+        <button class="media-card vod" data-view="vod"><span class="media-icon">▶</span><strong>FILMES</strong><small id="vod-count">0 títulos</small></button>
+        <button class="media-card series" data-view="series"><span class="media-icon">▤</span><strong>SÉRIES</strong><small id="series-count">0 séries</small></button>
+        <button class="media-card discover" data-view="discover"><span class="media-icon">✦</span><strong>DESCUBRA</strong><small>Assista a prévias de filmes e séries</small></button>
+        <button class="media-card recommendations" data-action="show-recommendations"><span class="media-icon">★</span><strong>PARA VOCÊ</strong><small>Filmes e séries baseados no que assistiu</small></button>
+        <button class="media-card recent" data-view="recent"><span class="media-icon">◷</span><strong>ADICIONADOS RECENTEMENTE</strong><small>Novos filmes e séries da sua lista</small></button>
+      </div>
+
+      <section id="continue-section" class="continue-section hidden">
+        <div class="section-heading">
+          <div><p class="eyebrow">RETOME DE ONDE PAROU</p><h2>Continuar assistindo</h2></div>
+          <button data-view="history">Ver histórico</button>
+        </div>
+        <div id="continue-grid" class="continue-grid"></div>
+      </section>
+
+      <div id="hub-collections" class="hub-collections" aria-label="Coleções de filmes e séries"></div>
+
+      <section id="recommendations-section" class="recommendations-section hidden" aria-label="Sugestões para você">
+        <div class="section-heading">
+          <div><p class="eyebrow">BASEADO NO QUE VOCÊ ASSISTIU</p><h2>Sugestões para você</h2></div>
+          <button data-view="discover">Explorar catálogo</button>
+        </div>
+        <div id="recommendations-message" class="recommendations-message hidden"></div>
+        <div id="recommendations-movies" class="recommendations-group hidden">
+          <h3>Filmes para você</h3>
+          <div class="recommendations-grid" data-recommend-grid="vod"></div>
+        </div>
+        <div id="recommendations-series" class="recommendations-group hidden">
+          <h3>Séries para você</h3>
+          <div class="recommendations-grid" data-recommend-grid="series"></div>
+        </div>
+      </section>
+
+      <div class="shortcut-grid">
+        <button data-view="favorites">★<span>Favoritos</span></button>
+        <button data-view="search">⌕<span>Buscar</span></button>
+        <button data-view="history">◷<span>Histórico</span></button>
+        <button data-view="radio">◉<span>Rádio <small id="radio-count">0 estações</small></span></button>
+        <button data-action="open-account">♙<span>Conta</span></button>
+        <button data-action="refresh">↻<span>Atualizar</span></button>
+        <button data-view="settings">⚙<span>Configurações</span></button>
+      </div>
+    </section>
+  </template>
+
+  <template id="global-search-template">
+    <section class="hub-search-view view-pad">
+      <div class="page-heading"><button data-view="home">←</button><div><p class="eyebrow">EXPLORE SEU CATÁLOGO</p><h1>Buscar filmes e séries</h1></div></div>
+      <input id="global-search-input" class="search-input hub-search-input" type="search" autocomplete="off" placeholder="Digite o título, gênero ou ano…" aria-label="Pesquisar filmes e séries">
+      <div class="hub-search-bar"><div class="hub-search-filters" aria-label="Tipo de conteúdo">
+        <button class="active" data-search-kind="all" aria-pressed="true">Todos</button>
+        <button data-search-kind="vod" aria-pressed="false">Filmes</button>
+        <button data-search-kind="series" aria-pressed="false">Séries</button>
+      </div><span id="global-search-status" role="status"></span></div>
+      <div id="global-search-grid" class="hub-search-grid"></div>
+      <div id="global-search-empty" class="hub-search-empty hidden">Nenhum título corresponde à busca. Verifique o nome ou atualize seu catálogo.</div>
+      <button id="global-search-more" class="load-more hidden">Mostrar mais resultados</button>
+    </section>
+  </template>
+
+  <template id="list-template">
+    <section class="content-view">
+      <aside class="sidebar">
+        <div class="sidebar-head"><button data-view="home">←</button><h2 id="content-title">Conteúdo</h2></div>
+        <input id="search-input" class="search-input" type="search" placeholder="Buscar..." />
+        <div id="category-list" class="category-list"></div>
+      </aside>
+      <div class="content-main">
+        <div id="content-toolbar" class="content-toolbar"></div>
+        <div id="item-grid" class="item-grid"></div>
+        <button id="load-more" class="load-more hidden">Carregar mais</button>
+        <div id="empty-state" class="empty-state hidden"><strong>Nenhum item encontrado</strong><span>Atualize o conteúdo ou escolha outra categoria.</span></div>
+      </div>
+    </section>
+  </template>
+
+  <template id="epg-template">
+    <section class="epg-view view-pad">
+      <div class="page-heading"><button data-view="home">←</button><div><p class="eyebrow">PROGRAMAÇÃO</p><h1>Guia TV</h1></div></div>
+      <div class="epg-toolbar"><input id="epg-search" class="search-input" type="search" placeholder="Buscar canal..."><span id="epg-status">Carregando...</span></div>
+      <div id="epg-list" class="epg-list"></div>
+      <button id="epg-more" class="load-more hidden">Carregar mais canais</button>
+    </section>
+  </template>
+
+  <template id="player-template">
+    <section class="player-view">
+      <div class="player-top"><button id="player-back">← Voltar</button><div><h2 id="player-title"></h2><p id="player-subtitle"></p></div><button id="favorite-toggle">☆ Favoritar</button><button id="player-speed" class="hidden" disabled>Velocidade 1×</button></div>
+      <div class="video-shell">
+        <video id="video-player" controls autoplay></video>
+        <div id="player-message" class="player-message hidden"></div>
+        <div id="player-recovery" class="player-recovery hidden" role="dialog" aria-label="Recuperar transmissão">
+          <strong>Transmissão indisponível</strong>
+          <span id="player-recovery-message">Não foi possível reconectar ao canal.</span>
+          <div class="player-recovery-actions">
+            <button data-live-recovery="retry">Tentar novamente</button>
+            <button data-live-recovery="next">Próximo canal</button>
+            <button data-live-recovery="back">Voltar</button>
+          </div>
+          <small>← → escolher • OK confirmar</small>
+        </div>
+        <div id="live-zap-overlay" class="live-zap-overlay hidden" aria-live="polite">
+          <img id="live-zap-logo" class="hidden" src="" alt="">
+          <div class="live-zap-copy">
+            <strong id="live-zap-name">Canal</strong>
+            <span id="live-zap-now">Agora • carregando programação…</span>
+            <div class="live-zap-progress"><i id="live-zap-progress-fill"></i></div>
+            <small id="live-zap-next"></small>
+          </div>
+        </div>
+        <div id="player-progress" class="player-progress-overlay hidden" aria-hidden="true">
+          <div class="player-control-head">
+            <span id="player-control-state" class="player-control-state">▶</span>
+            <strong id="player-control-title">Reprodução</strong>
+            <small>OK pausa/play • ← → avança 30s • ↑ áudio/legendas</small>
+          </div>
+          <div class="player-control-progress">
+            <span id="player-progress-current">0:00</span>
+            <div class="player-progress-track"><i id="player-progress-fill"></i></div>
+            <span id="player-progress-duration">0:00</span>
+          </div>
+        </div>
+        <aside id="live-channel-panel" class="live-channel-panel hidden" aria-label="Lista de canais">
+          <div class="live-channel-panel-head">
+            <strong>Canais ao vivo</strong>
+            <small>Agora e próximo • ↑ ↓ navegar • → favorito • OK assistir</small>
+          </div>
+          <div id="live-channel-list" class="live-channel-list"></div>
+        </aside>
+      </div>
+      <div id="now-program" class="now-program"></div>
+    </section>
+  </template>
+
+  <template id="history-template">
+    <section class="history-view view-pad">
+      <div class="page-heading">
+        <button data-view="home">←</button>
+        <div><p class="eyebrow">SEU HISTÓRICO</p><h1>Assistidos recentemente</h1></div>
+      </div>
+      <div class="history-toolbar">
+        <div class="history-toolbar-main">
+          <span id="history-count">0 itens</span>
+          <input id="history-search" class="search-input history-search" type="search" placeholder="Buscar no histórico..." autocomplete="off" aria-label="Buscar no histórico">
+          <div class="history-filters" aria-label="Filtrar histórico">
+            <button class="history-filter active" data-history-filter="all">Todos</button>
+            <button class="history-filter" data-history-filter="progress">Em andamento</button>
+            <button class="history-filter" data-history-filter="completed">Concluídos</button>
+          </div>
+        </div>
+        <button id="history-clear" class="btn danger">Limpar histórico</button>
+      </div>
+      <div id="history-grid" class="history-grid"></div>
+      <div id="history-empty" class="empty-state hidden"><strong>Nenhum histórico ainda</strong><span>Filmes e episódios assistidos aparecerão aqui.</span></div>
+    </section>
+  </template>
+
+  <template id="settings-template">
+    <section class="settings-view view-pad">
+      <div class="page-heading"><button data-view="home">←</button><div><p class="eyebrow">PREFERÊNCIAS</p><h1>Configurações</h1></div></div>
+      <div class="settings-grid">
+        <button data-action="switch-profile"><b>☺</b><span>Trocar perfil</span><small>Histórico e favoritos separados</small></button>
+        <button data-action="open-account"><b>♙</b><span>Conta</span><small>Servidor e acesso</small></button>
+        <button data-setting="videoSize"><b>⛶</b><span>Tamanho do vídeo</span><small id="video-size-label">Ajustar</small></button>
+        <button data-setting="streamType"><b>▶</b><span>Tipo de stream</span><small id="stream-type-label">HLS</small></button>
+        <button data-setting="pageSize"><b>▦</b><span>Itens por página</span><small id="page-size-label">120 itens</small></button>
+        <button data-setting="nextEpisodeSeconds"><b>⏭</b><span>Próximo episódio</span><small id="next-episode-label">90s antes do fim</small></button>
+        <button data-action="refresh"><b>↻</b><span>Atualizar conteúdo</span><small>Sincronizar listas</small></button>
+        <button data-action="check-update"><b>⇩</b><span>Atualizar aplicativo</span><small>Verificar nova versão</small></button>
+        <button data-view="epg"><b>EPG</b><span>Guia de TV</span><small>Agora e próximo</small></button>
+        <button data-action="diagnostics"><b>◴</b><span>Diagnóstico</span><small>Testar cache/API</small></button>
+        <button data-action="backup"><b>⇅</b><span>Backup e restauração</span><small>Perfis, favoritos e histórico</small></button>
+        <button data-action="open-account"><b>♙</b><span>Múltiplas contas</span><small>Adicionar e trocar</small></button>
+        <button data-action="support"><b>?</b><span>Suporte</span><small>Informações do app</small></button>
+      </div>
+    </section>
+  </template>
+
+  <div id="modal-root"></div>
+
+   <script type="module" src="web/bootstrap.mjs"></script>
+</body>
+</html>

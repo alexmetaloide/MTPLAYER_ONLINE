@@ -1,0 +1,228 @@
+html.android-tv,
+html.android-tv body {
+  width:100%;
+  height:100%;
+  overflow:hidden;
+}
+
+html.android-tv body {
+  font-size:18px;
+}
+
+html.android-tv .topbar {
+  height:84px;
+  padding:0 30px;
+}
+
+html.android-tv .content-view,
+html.android-tv .player-view {
+  height:calc(100vh - 84px);
+}
+
+html.android-tv body.live-player-fullscreen .player-view {
+  position:fixed;
+  inset:0;
+  width:100vw;
+  height:100vh;
+  padding:0;
+  margin:0;
+}
+
+html.android-tv body.live-player-fullscreen .video-shell,
+html.android-tv body.live-player-fullscreen #video-player {
+  width:100vw;
+  height:100vh;
+  max-width:none;
+  margin:0;
+}
+
+html.android-tv .content-view {
+  grid-template-columns:320px 1fr;
+}
+
+html.android-tv .sidebar {
+  padding:22px;
+}
+
+html.android-tv .category-list button,
+html.android-tv .sidebar-head button,
+html.android-tv .page-heading button,
+html.android-tv .player-top button,
+html.android-tv .settings-grid button,
+html.android-tv .shortcut-grid button {
+  min-height:52px;
+}
+
+html.android-tv .item-grid {
+  gap:16px;
+}
+
+html.android-tv .item-card,
+html.android-tv .epg-row,
+html.android-tv .history-card,
+html.android-tv .continue-card {
+  contain:layout;
+}
+
+html.android-tv button:focus,
+html.android-tv input:focus,
+html.android-tv select:focus,
+html.android-tv [tabindex]:focus,
+html.android-tv .tv-nav-focus {
+  outline:4px solid #ffd84d;
+  outline-offset:3px;
+  border-color:#ffd84d;
+  box-shadow:none;
+}
+
+html.android-tv .item-card:focus,
+html.android-tv .item-card-poster:focus {
+  transform:none;
+  border-color:#ffd84d;
+  z-index:3;
+}
+
+html.android-tv .category-list button.active,
+html.android-tv .history-filter.active,
+html.android-tv .season-tab.active,
+html.android-tv .panel-types button.active,
+html.android-tv .account-row.active,
+html.android-tv .live-channel-option.selected,
+html.android-tv .series-episode-row:focus,
+html.android-tv .track-option.selected {
+  border-color:#ffd84d;
+  background:rgba(255,216,77,.16);
+}
+
+html.android-tv .live-channel-option.selected,
+html.android-tv .live-channel-option:focus,
+html.android-tv .player-recovery-actions button.selected,
+html.android-tv .player-recovery-actions button:focus {
+  outline-color:#ffd84d;
+  border-color:#ffd84d;
+}
+
+html.android-tv .media-card,
+html.android-tv .item-card,
+html.android-tv .item-card-poster,
+html.android-tv .continue-card,
+html.android-tv .history-card,
+html.android-tv .settings-grid button,
+html.android-tv .shortcut-grid button,
+html.android-tv .season-tab,
+html.android-tv .series-episode-row {
+  transition:none;
+}
+
+html.android-tv .series-detail-bg {
+  filter:none;
+}
+
+html.android-tv .modal-backdrop {
+  backdrop-filter:none;
+}
+
+html.android-tv .episode-watched,
+html.android-tv .episode-progress-label,
+html.android-tv .episode-complete-status {
+  color:#ffd84d;
+}
+
+html.android-tv .track-option {
+  min-height:66px;
+  font-size:18px;
+}
+
+html.android-tv .account-login .topbar,
+html.android-tv .profile-selection .topbar {
+  display:none;
+}
+
+html.android-tv .profile-screen {
+  height:100vh;
+  padding:34px 70px;
+}
+
+html.android-tv .profile-screen h1 {
+  font-size:50px;
+}
+
+html.android-tv .profile-grid {
+  width:min(1180px,100%);
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:20px;
+}
+
+html.android-tv .profile-card {
+  min-height:245px;
+}
+
+html.android-tv .profile-card.tv-nav-focus,
+html.android-tv .profile-footer-actions .tv-nav-focus,
+html.android-tv .profile-manager-row .tv-nav-focus,
+html.android-tv .avatar-choice.tv-nav-focus,
+html.android-tv .pin-keypad .tv-nav-focus {
+  outline:3px solid #ffd84d !important;
+  outline-offset:3px;
+  border-color:#ffd84d !important;
+}
+
+html.android-tv .account-login-screen {
+  height:100vh;
+  padding:28px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(145deg,#061a33,#0b2d57);
+}
+
+html.android-tv .account-login-card {
+  width:960px;
+  max-width:100%;
+  max-height:100%;
+  padding:28px 36px;
+}
+
+html.android-tv .account-login-card #xtream-fields {
+  grid-template-columns:repeat(2,minmax(0,1fr));
+}
+
+html.android-tv .account-login-card #xtream-fields > label:first-child {
+  grid-column:1 / -1;
+}
+
+html.android-tv .video-shell {
+  position:relative;
+  background:#000;
+}
+
+html.android-tv .player-progress-overlay,
+html.android-tv .live-zap-overlay {
+  z-index:4;
+}
+
+html.android-tv .live-channel-panel {
+  width:560px;
+  max-width:52vw;
+  z-index:6;
+}
+
+html.android-tv .live-channel-option {
+  min-height:78px;
+  font-size:18px;
+}
+
+html.android-tv .player-control-head strong {
+  font-size:20px;
+}
+
+html.android-tv .player-control-head small,
+html.android-tv .player-control-progress > span {
+  font-size:16px;
+}
+
+@media (min-width:1800px) {
+  html.android-tv body { font-size:20px; }
+  html.android-tv .content-view { grid-template-columns:360px 1fr; }
+  html.android-tv .item-grid { gap:20px; }
+}

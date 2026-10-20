@@ -1,0 +1,274 @@
+/* Android smartphone/tablet only. Loaded dynamically by android-api.js. */
+@media (max-width: 900px) {
+  .topbar { height:58px; padding:0 14px; }
+  .brand { gap:7px; }
+  .brand-logo { width:30px; height:30px; border-radius:7px; }
+  .brand strong { font-size:14px; }
+  .top-actions { gap:6px; font-size:12px; }
+  .icon-btn { width:34px; height:34px; border-radius:9px; font-size:17px; }
+
+  .view-pad { height:calc(100vh - 58px); padding:14px 16px 18px; }
+  .hero { min-height:96px; padding:14px 16px; border-radius:15px; }
+  .eyebrow { margin-bottom:4px; font-size:9px; }
+  .hero h1,.page-heading h1 { font-size:24px; }
+  .hero p:not(.eyebrow) { margin-top:5px; font-size:12px; }
+  .hero-status { padding:8px 10px; font-size:11px; }
+  .status-dot { width:8px; height:8px; }
+
+  .primary-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:9px; margin-top:11px; }
+  .media-card { min-height:116px; border-radius:14px; padding:13px 14px; }
+  .media-card::after { width:80px; height:80px; right:-24px; top:-24px; }
+  .media-icon { font-size:30px; margin-bottom:10px; }
+  .media-card strong { font-size:15px; }
+  .media-card small { margin-top:3px; font-size:10px; }
+
+  .shortcut-grid { grid-template-columns:repeat(auto-fit,minmax(105px,1fr)); gap:7px; margin-top:9px; }
+  .shortcut-grid button { border-radius:10px; padding:9px 10px; font-size:15px; }
+  .shortcut-grid button span { margin-left:5px; font-size:11px; }
+  .shortcut-grid button small { font-size:9px; }
+
+  .continue-section { margin-top:13px; }
+  .section-heading { gap:9px; margin-bottom:8px; }
+  .section-heading h2 { font-size:18px; }
+  .section-heading button { padding:7px 9px; font-size:10px; }
+  .continue-grid,.history-grid { grid-template-columns:repeat(auto-fill,minmax(118px,1fr)); gap:8px; }
+  .continue-poster { height:76px; }
+  .history-card .continue-poster { height:108px; }
+  .continue-meta { padding:8px 9px 9px; gap:3px; }
+  .continue-meta strong { font-size:11px; }
+  .continue-meta small { font-size:9px; }
+  .history-toolbar { min-height:28px; margin:-7px 0 7px; font-size:10px; align-items:flex-start; }
+  .history-toolbar-main { align-items:flex-start; flex-direction:column; gap:6px; }
+  .history-search { width:100%; max-width:210px; margin:0; padding:5px 7px; font-size:9px; }
+  .history-filters { gap:4px; flex-wrap:wrap; }
+  .history-filter { padding:5px 7px; font-size:9px; }
+  .history-toolbar .btn { padding:6px 8px; font-size:9px; white-space:nowrap; }
+  .history-actions button { padding:7px 5px; font-size:9px; }
+
+  .content-view { height:calc(100vh - 58px); grid-template-columns:180px 1fr; }
+  .sidebar { padding:10px; }
+  .sidebar-head { gap:6px; }
+  .sidebar-head h2 { font-size:16px; }
+  .sidebar-head button,.page-heading button,.player-top button { padding:7px 9px; border-radius:8px; }
+  .search-input { margin:10px 0 8px; padding:9px 10px; border-radius:9px; font-size:12px; }
+  .category-list button { padding:8px 9px; border-radius:8px; font-size:12px; }
+  .content-main { padding:10px 12px 18px; }
+  .content-toolbar { min-height:32px; margin-bottom:6px; font-size:11px; }
+  .item-grid { grid-template-columns:repeat(auto-fill,minmax(108px,1fr)); gap:8px; }
+  .item-grid-vod,.item-grid-series { grid-template-columns:repeat(auto-fill,minmax(96px,126px)); gap:8px; }
+  .item-card { min-height:150px; border-radius:11px; }
+  .item-card .poster { height:98px; }
+  .item-card-live .poster img { max-width:48%; max-height:48%; }
+  .item-card .poster span { font-size:28px; }
+  .item-card .meta { padding:8px; gap:3px; }
+  .item-card .meta strong { font-size:11px; }
+  .item-card .meta small { font-size:9px; }
+  .item-card-poster { min-height:0; border-radius:3px; }
+  .item-card-poster .poster { height:auto; }
+  .item-card-poster .meta { padding:22px 7px 7px; }
+  .item-card-poster .meta strong { font-size:10px; }
+  .load-more { margin:12px auto 5px; min-width:150px; padding:9px 12px; font-size:11px; }
+
+  .series-detail-scroll { padding:14px 16px 24px; }
+  .series-detail-close { top:10px; right:12px; padding:7px 9px; font-size:11px; }
+  .series-hero { grid-template-columns:115px minmax(0,1fr); gap:12px; padding-right:64px; }
+  .series-poster { width:115px; }
+  .series-info h2 { margin-top:2px; font-size:19px; }
+  .series-rating { gap:5px 9px; font-size:11px; }
+  .series-rating strong { font-size:14px; }
+  .series-cast,.series-director { font-size:11px; }
+  .series-plot { font-size:11px; line-height:1.35; }
+  .season-tabs { gap:6px; margin:10px 0 8px; }
+  .season-tab { padding:8px 10px; font-size:10px; }
+  .series-episode-row { padding:10px 9px; }
+  .series-episode-row strong { font-size:12px; }
+  .series-episode-row p { margin:4px 0 6px; font-size:10px; }
+  .series-episode-row span { font-size:10px; }
+
+  .page-heading { gap:10px; margin-bottom:13px; }
+  .settings-grid { grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; }
+  .settings-grid button { min-height:108px; padding:11px; border-radius:12px; }
+  .settings-grid b { font-size:28px; }
+  .settings-grid span { font-size:12px; }
+  .settings-grid small { margin-top:3px; font-size:9px; }
+
+  .player-view { height:calc(100vh - 58px); padding:10px 14px 16px; }
+  .player-top { gap:9px; margin-bottom:8px; }
+  .player-top h2 { font-size:15px; }
+  .player-top p { font-size:10px; }
+  .video-shell { border-radius:12px; }
+  .now-program { margin-top:8px; padding:10px 12px; border-radius:10px; font-size:11px; }
+
+  .epg-toolbar { gap:9px; margin-bottom:8px; }
+  .epg-toolbar .search-input { max-width:280px; }
+  .epg-toolbar span { font-size:10px; }
+  .epg-list { gap:6px; }
+  .epg-row { grid-template-columns:minmax(130px,.9fr) minmax(180px,2fr); gap:7px; border-radius:10px; padding:8px; }
+  .epg-channel { gap:7px; }
+  .epg-channel img,.epg-channel span { width:30px; height:30px; border-radius:6px; }
+  .epg-channel strong { font-size:11px; }
+  .epg-program { gap:2px; padding:2px 7px; }
+  .epg-program strong { font-size:11px; }
+  .epg-program span { font-size:9px; }
+  .epg-program small { font-size:8px; }
+
+  .modal-backdrop { padding:14px; }
+  .modal { padding:16px; border-radius:15px; }
+  .modal h2 { font-size:20px; }
+  .modal > p { margin-bottom:12px; font-size:12px; }
+  .panel-types button { min-height:65px; padding:10px; }
+  .progress-step { padding:8px; }
+}
+
+@media (max-width: 600px) {
+  .topbar { padding:0 10px; }
+  #clock { display:none; }
+  .view-pad { padding:11px 10px 15px; }
+  .hero { min-height:84px; padding:12px; }
+  .hero-status { display:none; }
+  .hero h1,.page-heading h1 { font-size:21px; }
+
+  .primary-grid { gap:7px; }
+  .media-card { min-height:102px; padding:11px; }
+  .media-icon { font-size:26px; margin-bottom:7px; }
+  .media-card strong { font-size:13px; }
+  .media-card small { font-size:9px; }
+  .shortcut-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
+  .shortcut-grid button { padding:8px; }
+  .shortcut-grid button span { display:block; margin:3px 0 0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+
+  .section-heading { align-items:center; }
+  .section-heading h2 { font-size:17px; }
+  .continue-grid,.history-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .continue-poster { height:84px; }
+  .history-card .continue-poster { height:118px; }
+
+  .content-view { display:flex; flex-direction:column; }
+  .sidebar { flex:0 0 auto; max-height:150px; border-right:0; border-bottom:1px solid var(--line); padding:8px 10px; }
+  .sidebar-head h2 { font-size:14px; }
+  .search-input { margin:6px 0; padding:8px 9px; }
+  .category-list { flex-direction:row; gap:5px; overflow-x:auto; overflow-y:hidden; padding:0 0 3px; }
+  .category-list button { flex:0 0 auto; white-space:nowrap; padding:7px 9px; }
+  .content-main { flex:1 1 auto; min-height:0; padding:8px 10px 14px; }
+  .item-grid { grid-template-columns:repeat(auto-fill,minmax(92px,1fr)); gap:7px; }
+  .item-grid-vod,.item-grid-series { grid-template-columns:repeat(auto-fill,minmax(82px,106px)); gap:7px; }
+  .item-card { min-height:132px; }
+  .item-card .poster { height:84px; }
+  .item-card-poster { min-height:0; }
+  .item-card-poster .poster { height:auto; }
+
+  .series-detail-scroll { padding:10px 10px 18px; }
+  .series-detail-close { top:7px; right:8px; }
+  .series-hero { grid-template-columns:86px minmax(0,1fr); gap:9px; padding-right:58px; }
+  .series-poster { width:86px; }
+  .series-info h2 { font-size:15px; }
+  .series-cast,.series-director { display:none; }
+  .series-plot { max-height:58px; overflow:hidden; }
+
+  .settings-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:7px; }
+  .settings-grid button { min-height:96px; padding:10px; }
+  .settings-grid b { font-size:25px; }
+
+  .epg-toolbar { align-items:stretch; flex-direction:column; }
+  .epg-toolbar .search-input { max-width:none; }
+  .epg-row { grid-template-columns:minmax(105px,.9fr) minmax(150px,1.7fr); padding:7px; }
+
+  .player-top { grid-template-columns:auto 1fr; }
+  #favorite-toggle { grid-column:1 / -1; justify-self:end; }
+  .modal-backdrop { padding:8px; }
+  .modal,.modal.wide { width:98vw; max-height:94vh; padding:13px; }
+  .panel-types { gap:7px; }
+  .progress-steps { grid-template-columns:repeat(2,1fr); }
+}
+
+@media (max-width: 1000px) and (max-height: 600px) {
+  .hero { min-height:78px; }
+  .hero h1 { font-size:22px; }
+  .primary-grid { margin-top:8px; }
+  .media-card { min-height:94px; padding:10px 12px; }
+  .media-icon { font-size:25px; margin-bottom:5px; }
+  .shortcut-grid { margin-top:7px; }
+  .settings-grid button { min-height:92px; }
+  .settings-grid b { font-size:24px; }
+}
+
+/* A altura identifica o smartphone em paisagem, inclusive os modelos largos. */
+@media (orientation: landscape) and (max-height: 520px) {
+  .topbar { height:48px; padding:0 10px; }
+  .brand { gap:6px; }
+  .brand-logo { width:26px; height:26px; border-radius:6px; }
+  .brand strong { font-size:13px; }
+  .top-actions { gap:5px; font-size:11px; }
+  .icon-btn { width:30px; height:30px; border-radius:8px; font-size:15px; }
+
+  .home-view.view-pad { height:calc(100vh - 48px); padding:10px 12px; }
+  .home-view .hero { min-height:64px; padding:9px 12px; border-radius:12px; gap:12px; }
+  .home-view .eyebrow { font-size:9px; margin-bottom:3px; }
+  .home-view .hero h1 { font-size:19px; }
+  .home-view .hero p:not(.eyebrow) { font-size:11px; margin-top:4px; }
+  .home-view .hero-status { padding:7px 10px; font-size:10px; }
+  .home-view .primary-grid { grid-template-columns:repeat(4,minmax(0,1fr)); gap:7px; margin-top:8px; }
+  .home-view .media-card { min-height:80px; padding:9px 10px; border-radius:11px; }
+  .home-view .media-card::after { width:60px; height:60px; right:-18px; top:-18px; }
+  .home-view .media-icon { font-size:21px; line-height:1; margin-bottom:6px; }
+  .home-view .media-card strong { font-size:12px; line-height:1.2; }
+  .home-view .media-card small { font-size:10px; line-height:1.2; margin-top:3px; }
+  .home-view .shortcut-grid { grid-template-columns:repeat(5,minmax(0,1fr)); gap:6px; margin-top:7px; }
+  .home-view .shortcut-grid button { min-height:44px; padding:6px 8px; border-radius:9px; font-size:14px; }
+  .home-view .shortcut-grid button span { display:block; font-size:10px; margin:2px 0 0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .home-view .shortcut-grid button small { font-size:9px; }
+}
+
+/* A altura identifica o smartphone em paisagem, inclusive os modelos largos. */
+@media (orientation: landscape) and (max-height: 520px) {
+  .topbar { height:48px; padding:0 10px; }
+  .brand { gap:6px; }
+  .brand-logo { width:26px; height:26px; border-radius:6px; }
+  .brand strong { font-size:13px; }
+  .top-actions { gap:5px; font-size:11px; }
+  .icon-btn { width:30px; height:30px; border-radius:8px; font-size:15px; }
+
+  .home-view.view-pad { height:calc(100vh - 48px); padding:10px 12px; }
+  .home-view .hero { min-height:64px; padding:9px 12px; border-radius:12px; gap:12px; }
+  .home-view .eyebrow { font-size:9px; margin-bottom:3px; }
+  .home-view .hero h1 { font-size:19px; }
+  .home-view .hero p:not(.eyebrow) { font-size:11px; margin-top:4px; }
+  .home-view .hero-status { padding:7px 10px; font-size:10px; }
+  .home-view .primary-grid { grid-template-columns:repeat(4,minmax(0,1fr)); gap:7px; margin-top:8px; }
+  .home-view .media-card { min-height:80px; padding:9px 10px; border-radius:11px; }
+  .home-view .media-card::after { width:60px; height:60px; right:-18px; top:-18px; }
+  .home-view .media-icon { font-size:21px; line-height:1; margin-bottom:6px; }
+  .home-view .media-card strong { font-size:12px; line-height:1.2; }
+  .home-view .media-card small { font-size:10px; line-height:1.2; margin-top:3px; }
+  .home-view .shortcut-grid { grid-template-columns:repeat(5,minmax(0,1fr)); gap:6px; margin-top:7px; }
+  .home-view .shortcut-grid button { min-height:44px; padding:6px 8px; border-radius:9px; font-size:14px; }
+  .home-view .shortcut-grid button span { display:block; font-size:10px; margin:2px 0 0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .home-view .shortcut-grid button small { font-size:9px; }
+}
+
+/* Smartphone em paisagem: prioriza densidade de canais e área útil. */
+@media (orientation: landscape) and (max-width: 1000px) and (max-height: 520px) {
+  .content-view { height:calc(100vh - 48px); display:grid; grid-template-columns:146px 1fr; }
+  .sidebar { max-height:none; border-right:1px solid var(--line); border-bottom:0; padding:7px 8px; }
+  .sidebar-head { gap:5px; }
+  .sidebar-head h2 { font-size:13px; }
+  .sidebar-head button { padding:5px 7px; border-radius:7px; }
+  .search-input { margin:6px 0; padding:7px 8px; border-radius:7px; font-size:10px; }
+  .category-list { flex-direction:column; overflow-x:hidden; overflow-y:auto; padding:0; }
+  .category-list button { padding:6px 7px; border-radius:7px; font-size:10px; }
+
+  .content-main { padding:7px 8px 10px; }
+  .content-toolbar { min-height:24px; margin-bottom:5px; font-size:9px; }
+  .item-grid { grid-template-columns:repeat(auto-fill,minmax(84px,1fr)); gap:6px; }
+  .item-grid-vod,.item-grid-series { grid-template-columns:repeat(auto-fill,minmax(74px,96px)); gap:6px; }
+  .item-card { min-height:104px; border-radius:8px; }
+  .item-card .poster { height:66px; }
+  .item-card-poster { min-height:0; }
+  .item-card-poster .poster { height:auto; }
+  .item-card-live .poster img { max-width:34%; max-height:34%; }
+  .item-card .poster span { font-size:22px; }
+  .item-card .meta { padding:6px; gap:2px; }
+  .item-card .meta strong { font-size:10px; }
+  .item-card .meta small { font-size:8px; }
+  .load-more { margin:8px auto 4px; min-width:120px; padding:7px 10px; font-size:9px; }
+}

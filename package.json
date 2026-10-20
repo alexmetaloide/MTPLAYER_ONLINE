@@ -1,0 +1,14 @@
+{
+  "name": "mtplayer-web",
+  "version": "0.2.13-web.1",
+  "private": true,
+  "description": "MTPLAYER adaptado para navegadores e GitHub Pages",
+  "type": "module",
+  "license": "UNLICENSED",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "build": "node scripts/build.mjs",
+    "start": "node scripts/serve.mjs"
+  }
+}

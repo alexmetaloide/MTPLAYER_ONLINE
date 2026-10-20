@@ -1,0 +1,13 @@
+{
+  "id": "./",
+  "name": "MTPLAYER Web",
+  "short_name": "MTPLAYER",
+  "description": "Player IPTV para suas próprias listas autorizadas.",
+  "lang": "pt-BR",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#10131d",
+  "theme_color": "#10131d",
+  "icons": [{ "src": "assets/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+}

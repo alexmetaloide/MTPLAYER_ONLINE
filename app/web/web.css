@@ -1,0 +1,23 @@
+.web-notice { padding:12px 15px; margin:14px 0; background:#1c2537; border:1px solid #344663; border-radius:12px; font-size:12px; line-height:1.55; color:#cbd6ea; }
+.web-notice p { margin:5px 0 0; font-size:12px; }
+.web-fatal { padding:32px; max-width:800px; margin:auto; line-height:1.6; }
+input[type="file"] { max-width:100%; font-size:12px; }
+.account-login-screen { overflow-y:auto; }
+.web-app .account-login-card { margin-block:20px; }
+@media (max-width:700px) {
+  .topbar { flex-wrap:wrap; height:auto; min-height:92px; gap:4px; padding:8px 12px; }
+  .top-actions { flex-wrap:wrap; justify-content:flex-end; }
+  .top-actions #clock { display:none; }
+  .discover-top-link { padding:6px; font-size:11px; }
+  .content-view,.view-pad { height:calc(100dvh - 100px); }
+  .content-view { grid-template-columns:125px minmax(0,1fr); }
+  .sidebar { min-width:0; padding:8px; }
+  .hero { flex-wrap:wrap; gap:12px; }
+  .hero-status { font-size:10px; }
+  .panel-types { flex-wrap:wrap; }
+  .modal { max-height:90dvh; overflow-y:auto; }
+  .player-top { flex-wrap:wrap; gap:6px; }
+  .player-top h2 { font-size:14px; }
+  .web-app .account-login-card { width:100%; margin:0; padding:20px 16px; }
+  .web-notice { font-size:11px; padding:10px; }
+}
