@@ -2,7 +2,7 @@
 
 ## Execução local realizada
 
-- `npm test`: **18 testes aprovados**, sem dependências externas ou contas reais, incluindo feedback do login, envio duplicado, leitura dos campos e timeout.
+- `npm test`: **21 testes aprovados**, sem dependências externas ou contas reais, incluindo feedback do login, envio duplicado, leitura dos campos, timeout e atualização do cache estático.
 - `node --check`: scripts JavaScript/MJS sem erros de sintaxe.
 - `npm run build`: arquivos estáticos gerados em `dist/`.
 - Navegador real em `http://127.0.0.1:4173`: inicialização, formulário M3U, importação de arquivo local por `File`, seleção de perfil, tela inicial e catálogo com dados sintéticos.
@@ -24,3 +24,5 @@ O erro foi reproduzido no site publicado usando `http://example.com` e credencia
 A correção move o toast para fora desse contexto e mostra progresso/erro persistente no próprio formulário. A montagem de FormData agora está dentro do tratamento de erros; o botão é liberado em `finally`, tentativas duplicadas são ignoradas e respostas Xtream têm limite de 15 segundos por endpoint (dois endpoints possíveis). Isso não altera as exigências de HTTPS/CORS do navegador.
 
 Após a alteração, o navegador local confirmou erro de campos vazios visível no formulário (hit-testing na própria mensagem), botão novamente habilitado e toast como filho de `body`. Uma nova conexão M3U por arquivo sintético fechou o login e abriu a seleção de perfil.
+
+Na primeira atualização do site, o service worker ainda podia preencher um cache novo com módulos antigos do cache HTTP do navegador. A instalação agora usa requisições `cache: 'reload'` e namespace de cache v2. Os testes executam os handlers do worker para verificar revalidação, remoção limitada aos caches do MTPLAYER e exclusão de requisições privadas.
