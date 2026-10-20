@@ -104,7 +104,7 @@ export function createWebAPI({ storage = globalThis.sessionStorage, http = creat
     return [];
   };
   return Object.freeze({
-    getAppInfo: async () => ({ version: '0.2.13-web.1', platform: 'Web / GitHub Pages', portable: false }),
+    getAppInfo: async () => ({ version: '0.2.13-web.2', platform: 'Web / GitHub Pages', portable: false }),
     // Do not persist renderer logs: messages can contain provider URLs/tokens.
     log: async () => {},
     accounts: Object.freeze({

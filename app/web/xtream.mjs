@@ -88,7 +88,7 @@ function createXtreamProvider(http, logger) {
     let lastError = null;
     for (const endpoint of endpoints) {
       try {
-        const data = await http.getJson(apiUrl(account, null, {}, endpoint), { timeoutMs: 35000 });
+        const data = await http.getJson(apiUrl(account, null, {}, endpoint), { timeoutMs: 15000 });
         const user = data?.user_info && typeof data.user_info === 'object'
           ? data.user_info
           : (data && typeof data === 'object' && ('auth' in data || 'status' in data) ? data : null);

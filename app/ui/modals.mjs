@@ -1,4 +1,5 @@
 import { mountBlockButton } from './title-blocks.mjs';
+import { bindAccountForm } from './account-form.mjs';
 import { mountSimilar } from './similar.mjs';
 import { mountRatings } from './ratings.mjs';
 import { modalRoot, qs, qsa, esc, closeModal, toast } from './dom.mjs';
@@ -31,6 +32,7 @@ export function openAccountModal(state, { onSave, onActivate, onRemove }, { cont
       <label>Nome da lista<input name="name" value="Minha lista" maxlength="120" required></label>
        <div id="xtream-fields" class="form-grid"><label>Servidor / Portal (HTTPS)<input name="server" placeholder="https://servidor:porta" autocomplete="off"></label><label>Usuário<input name="username" autocomplete="off"></label><label>Senha<input name="password" type="password" autocomplete="off"></label></div>
        <div id="m3u-fields" class="form-grid hidden"><label>URL M3U (HTTPS)<input name="url" placeholder="https://servidor/get.php?..." autocomplete="off"></label><label>Ou abrir arquivo M3U local<input name="playlistFile" type="file" accept=".m3u,.m3u8,text/plain,audio/x-mpegurl"></label><small>O arquivo não é enviado a um servidor. Seus streams ainda precisam ser compatíveis com o navegador.</small></div>
+       <p class="account-status" data-account-status role="status" aria-live="polite" aria-atomic="true" tabindex="-1" hidden></p>
        <div class="form-actions">${!fullPage || activeId ? '<button type="button" class="btn" data-close>Voltar</button>' : ''}<button type="submit" class="btn primary">Conectar nesta aba</button></div>
     </form>
   </div></div>`;
@@ -57,35 +59,12 @@ export function openAccountModal(state, { onSave, onActivate, onRemove }, { cont
   });
   const closeButton = qs('[data-close]', container);
   if (closeButton) closeButton.onclick = onClose;
-  qs('#account-form', container).onsubmit = async event => {
-    event.preventDefault();
-    const submit = event.currentTarget.querySelector('[type="submit"]');
-    submit.disabled = true;
-    submit.textContent = 'Validando...';
-    const form = new FormData(event.currentTarget);
-    const draft = { type: selectedType, name: String(form.get('name') || '').trim() || 'Minha lista' };
-    if (selectedType === 'xtream') Object.assign(draft, {
-      server: String(form.get('server') || '').trim(),
-      username: String(form.get('username') || '').trim(),
-      password: String(form.get('password') || '')
-    });
-     try {
-       if (selectedType === 'm3u') {
-         draft.url = String(form.get('url') || '').trim();
-         const file = form.get('playlistFile');
-         if (file?.size) {
-           if (file.size > 50 * 1024 * 1024) throw new Error('A playlist excede 50 MB.');
-           draft.playlistText = await file.text();
-         }
-       }
-      await onSave(draft);
-      if (!fullPage) closeModal();
-    } catch (error) {
-      submit.disabled = false;
-       submit.textContent = 'Conectar nesta aba';
-      toast(error.message);
-    }
-  };
+   bindAccountForm(qs('#account-form', container), {
+     getType: () => selectedType,
+     onSave,
+     onSuccess: () => { if (!fullPage) closeModal(); },
+     typeButtons: qsa('[data-type]', container)
+   });
 
   // TVs Samsung não movem o foco automaticamente para conteúdo criado
   // dinamicamente. Deixe o primeiro botão do modal pronto para o controle.

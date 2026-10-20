@@ -2412,10 +2412,10 @@ function openAccounts() {
   }
   openAccountModal(state, {
     onSave: async draft => {
-      if (!(await changeAccount(() => window.desktopAPI.accounts.save(draft)))) return;
+      if (!(await changeAccount(() => window.desktopAPI.accounts.save(draft)))) return false;
       state.accountState = 'online';
       openProfiles();
-      toast('Conta validada e salva.');
+      toast('Conta conectada nesta aba.');
     },
     onActivate: async id => {
       if (!(await changeAccount(() => window.desktopAPI.accounts.activate(id)))) return;

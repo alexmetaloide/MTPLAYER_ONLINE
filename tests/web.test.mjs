@@ -49,6 +49,13 @@ test('HTTP: limite de leitura e JSON inválido', async () => {
   await assert.rejects(invalid.getJson('https://example.com'), /JSON/);
 });
 
+test('HTTP: timeout interrompe tentativa e produz erro visível sem URL/senha', async () => {
+  const http = createHttp((_url, options) => new Promise((_resolve, reject) => {
+    options.signal.addEventListener('abort', () => reject(new DOMException('Abortado', 'AbortError')), { once: true });
+  }));
+  await assert.rejects(http.getText('https://example.com/?password=segredo', { timeoutMs: 10 }), error => /demorou/.test(error.message) && !error.message.includes('segredo'));
+});
+
 test('M3U local: conta pública, catálogo, séries, reprodução e sessão', async () => {
   const storage = memory();
   const api = createWebAPI({ storage });

@@ -1,6 +1,11 @@
 .web-notice { padding:12px 15px; margin:14px 0; background:#1c2537; border:1px solid #344663; border-radius:12px; font-size:12px; line-height:1.55; color:#cbd6ea; }
 .web-notice p { margin:5px 0 0; font-size:12px; }
 .web-fatal { padding:32px; max-width:800px; margin:auto; line-height:1.6; }
+.account-status { margin:14px 0 0; padding:12px 14px; border:1px solid #496385; border-radius:10px; background:#17263b; color:#e5efff; font-size:13px; line-height:1.5; overflow-wrap:anywhere; }
+.account-status[hidden] { display:none; }
+.account-status[data-state="error"] { background:#391a25; border-color:#e77791; color:#ffe1e9; }
+.account-status:focus { outline:2px solid #91cfff; outline-offset:2px; }
+.web-app .toast { max-width:calc(100vw - 24px); width:max-content; overflow-wrap:anywhere; }
 input[type="file"] { max-width:100%; font-size:12px; }
 .account-login-screen { overflow-y:auto; }
 .web-app .account-login-card { margin-block:20px; }
